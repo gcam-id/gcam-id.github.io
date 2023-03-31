@@ -29,7 +29,6 @@ function getHref(links){
 function recent_post_start(json){
     feed = json.feed;
     entries = recent_post_createEntries();
-    recent_post_style();
     recent_post_content();
 }
 function recent_post_text(){
@@ -37,25 +36,11 @@ function recent_post_text(){
     var s = "<script src='"+src+"'></script>";
     document.write(s);
 }
-function recent_post_style(){
-    var s = "<style type='text/css'>";
-    s += "#recent_post{";
-    s += "margin:0px;";
-    s += "width:auto;";
-    s += "background:#fff;";
-    s += "}";
-    s += "</style>";
-    document.write(s);
-}
 function recent_post_content(){
-    var s = "<div id='recent_post' title='News'>";
+    var s = "<marquee id='isi_post' scrollAmount='"+scrolling_speed+"'>";
     if(info_text){
-    s += "<div class='wrapper'>";
-    s += "<div class='newstitle'>";
-    s += "News";
-    s += "</div>";
+    s += "";
     }
-    s += "  <marquee style='float:left; margin-left:10px; width:82%' scrollAmount='"+scrolling_speed+"'>";
     for(var i=0; i<latest_post; i++){
         var recent_post_entries = entries[i];
         s += "<a href='"+recent_post_entries.href+"' ";
@@ -64,7 +49,6 @@ function recent_post_content(){
         if(i != latest_post-1){s += " · ";}
     }
     s += "</marquee>";
-    s += "</div>";
     if(close_button){
     s += "<div style='float:right;margin-right:15px;'>";
     s += "<a href='javascript:void(0)' onclick='document.getElementById(\"recent_post\").style.display=\"none\"'>";
