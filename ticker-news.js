@@ -38,9 +38,6 @@ function recent_post_text(){
 }
 function recent_post_content(){
     var s = "<marquee id='isi_post' scrollAmount='"+scrolling_speed+"'>";
-    if(info_text){
-    s += "";
-    }
     for(var i=0; i<latest_post; i++){
         var recent_post_entries = entries[i];
         s += "<a href='"+recent_post_entries.href+"' ";
@@ -49,13 +46,6 @@ function recent_post_content(){
         if(i != latest_post-1){s += " · ";}
     }
     s += "</marquee>";
-    if(close_button){
-    s += "<div style='float:right;margin-right:15px;'>";
-    s += "<a href='javascript:void(0)' onclick='document.getElementById(\"recent_post\").style.display=\"none\"'>";
-    s += "(x)";
-    s += "</a>";
-    s += "</div>";
-    }
     document.write(s);
 }
 recent_post_text();
